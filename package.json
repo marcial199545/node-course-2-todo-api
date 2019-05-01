@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "delete": "node playground-dist/mongodb-delete.js",
         "find": "node playground-dist/mongodb-find.js",
         "start": "node playground-dist/index.js",
         "bundle": "./node_modules/.bin/webpack-cli",
