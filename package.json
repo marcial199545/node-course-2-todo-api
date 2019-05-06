@@ -16,8 +16,10 @@
     "license": "ISC",
     "dependencies": {
         "@types/mongodb": "^3.1.26",
+        "@types/mongoose": "^5.3.27",
         "@types/node": "^11.13.8",
         "mongodb": "^3.2.3",
+        "mongoose": "^5.5.5",
         "ts-loader": "^5.4.5",
         "typescript": "^3.4.5",
         "webpack": "^4.30.0",

@@ -1,6 +1,6 @@
 const path = require("path");
 module.exports = {
-    entry: "./playground/index.ts",
+    entry: "./playground/index",
     mode: "production", //can either be development or production
     module: {
         rules: [
