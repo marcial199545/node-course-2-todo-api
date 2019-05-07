@@ -42,7 +42,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var router = express_1.Router();
 var Todo_1 = __importDefault(require("../server/models/Todo"));
-router.route("/todos").post(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+router
+    .route("/todos")
+    .get(function (req, res) {
+    Todo_1.default.find()
+        .then(function (todos) {
+        res.send({ todos: todos });
+    })
+        .catch(function (err) {
+        res.status(400).send(err);
+    });
+})
+    .post(function (req, res) { return __awaiter(_this, void 0, void 0, function () {
     var todo;
     return __generator(this, function (_a) {
         todo = new Todo_1.default({

@@ -9,3 +9,4 @@ import Todo from "./models/Todo";
 connect();
 const app = new App();
 app.start();
+export default app;

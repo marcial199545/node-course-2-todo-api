@@ -10,3 +10,4 @@ var mongoose_1 = require("./db/mongoose");
 mongoose_1.connect();
 var app = new app_1.default();
 app.start();
+exports.default = app;
