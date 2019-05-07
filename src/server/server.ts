@@ -1,3 +1,11 @@
-import * as mongoose from "mongoose";
-(<any>mongoose).Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/TodoApp");
+// NOTE third party modules
+import App from "./app";
+import bodyParser from "body-parser";
+// NOTE Locals
+import mongoose, { connect } from "./db/mongoose";
+import User from "./models/User";
+import Todo from "./models/Todo";
+
+connect();
+const app = new App();
+app.start();
