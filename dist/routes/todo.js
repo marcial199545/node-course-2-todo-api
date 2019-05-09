@@ -12,17 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const mongodb_1 = require("mongodb");
 const router = express_1.Router();
 const Todo_1 = __importDefault(require("../server/models/Todo"));
 router
-    .route("/todos")
+    .route("/todos/:id")
     .get((req, res) => {
-    Todo_1.default.find()
-        .then(todos => {
-        res.send({ todos });
+    const { id } = req.params;
+    if (!mongodb_1.ObjectID.isValid(id)) {
+        console.log("TLC: Error §§§§> ID is not valid");
+        return res.status(404).render("errorPage", { err: "ID is not valid" });
+    }
+    Todo_1.default.findById(id)
+        .then(todo => {
+        if (!todo) {
+            console.log("TLC: Error §§§§> ID not found");
+            return res.status(404).render("errorPage", { err: "ID not found" });
+        }
+        res.send({ todo });
     })
         .catch(err => {
-        res.status(400).send(err);
+        res.status(400).send({});
     });
 })
     .post((req, res) => __awaiter(this, void 0, void 0, function* () {
