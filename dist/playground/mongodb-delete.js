@@ -7,15 +7,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongo = __importStar(require("mongodb"));
-var MongoClient = mongo.MongoClient, ObjectId = mongo.ObjectId;
-MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true }, function (err, client) {
+const mongo = __importStar(require("mongodb"));
+const { MongoClient, ObjectId } = mongo;
+MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true }, (err, client) => {
     if (err) {
         console.log(err);
-        return console.log("Unable to connect to the MonogDB server");
+        return console.log(`Unable to connect to the MonogDB server`);
     }
-    console.log("connected to MognoDb");
-    var db = client.db("TodoApp");
+    console.log(`connected to MognoDb`);
+    const db = client.db("TodoApp");
     // NOTE deleteOne() implementation
     // db.collection("Todos")
     //     .deleteOne({ text: "eat lunch" })
@@ -62,9 +62,9 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true
     //     );
     db.collection("Users")
         .findOneAndDelete({ _id: new ObjectId("5cc9e8f091dade2ee0aee709") })
-        .then(function (result) {
+        .then(result => {
         console.log("TCL: result", result.value);
-    }, function (err) {
+    }, err => {
         console.log("TCL: err", err);
     });
 });

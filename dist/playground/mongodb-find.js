@@ -7,15 +7,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongo = __importStar(require("mongodb"));
-var MongoClient = mongo.MongoClient, ObjectId = mongo.ObjectId;
-MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true }, function (err, client) {
+const mongo = __importStar(require("mongodb"));
+const { MongoClient, ObjectId } = mongo;
+MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true }, (err, client) => {
     if (err) {
         console.log(err);
-        return console.log("Unable to connect to the MonogDB server");
+        return console.log(`Unable to connect to the MonogDB server`);
     }
-    console.log("Connected to MongoDB server");
-    var db = client.db("TodoApp");
+    console.log(`Connected to MongoDB server`);
+    const db = client.db(`TodoApp`);
     // NOTE count() implementation
     // db.collection("Todos")
     //     .find({})
@@ -45,9 +45,9 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", { useNewUrlParser: true
     db.collection("Users")
         .find({ name: "Marcial" })
         .toArray()
-        .then(function (users) {
-        console.log("TCL: users =>  " + JSON.stringify(users, undefined, 2));
-    }, function (err) {
+        .then(users => {
+        console.log(`TCL: users =>  ${JSON.stringify(users, undefined, 2)}`);
+    }, err => {
         console.log("Unable to fetch users => ", err);
     });
     // client.close();
